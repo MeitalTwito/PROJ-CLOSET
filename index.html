@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closet - CRUDL</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="init()">
+    <h1>
+        Project coloset: CRUDL <br />
+        version 1.1 <br />
+        meital suris <br />
+    </h1>
+
+    <header class="header">
+        <nav class="nav container">
+            <div class="search-bar-box">
+                <input oninput="onFilterByTxt(this.value)" class="search-bar" type="text" name="search-bar"
+                    placeholder="Search items by name or brand" />
+            </div>
+
+            <div class="filter-box">
+                <ul class="main-categories">
+                </ul>
+                <ul class="colors"></ul>
+            </div>
+            <div class="box">
+
+                <select class="sort" name="sort" onchange="onSetSort(this.value)">
+                    <option value="">Sort items by</option>
+                    <option value="a">name (a-z)</option>
+                    <option value="z">name (z-a)</option>
+                    <option value="createdAt">date added</option>
+                </select>
+                <button class="btn add-item-btn" onclick="onRenderModal()"><svg width="16" height="16"
+                        aria-hidden="true" viewBox="0 0 7 7" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 3.505V.255h-.5v3.25H.25v.5H3.5v3.25H4v-3.25h3.25v-.5H4z"></path>
+                    </svg> <span>add new item</span></button>
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <section class="items-section">
+    </section>
+    <div class="modal">
+        <div class="modal-header">
+            <button onclick="onCloseModal()"><svg width="32" height="32" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg" fill="inherit" stroke="inherit">
+                    <path
+                        d="M12 12.707l6.846 6.846.708-.707L12.707 12l6.847-6.846-.707-.708L12 11.293 5.154 4.446l-.707.708L11.293 12l-6.846 6.846.707.707L12 12.707z">
+                    </path>
+                </svg></button>
+        </div>
+
+        <div class="modal-body">
+
+        </div>
+    </div>
+    <div class="user-msg">
+    </div>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/database.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/closet.service.js"></script>
+    <script src="js/closet.controller.js"></script>
+</body>
+
+</html>
