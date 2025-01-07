@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-console.log("Closet Controller loaded");
+console.log('Closet Controller loaded');
 
 const init = function () {
   renderItems();
@@ -14,7 +14,7 @@ const renderItems = function () {
   const items = getItemsToDisplay();
 
   const strHtmls = items.map(
-    (item) =>
+    item =>
       `     <article class="item-card" id="${item.id}">
             <header class="item-header">
                 <div class="item-img-box">
@@ -31,7 +31,7 @@ const renderItems = function () {
                 ${
                   item.isDesigner
                     ? `<span class="designer">designer</span>`
-                    : ""
+                    : ''
                 }
                 </p>
                 <p class="item-color">${item.colorName}</p>
@@ -46,9 +46,9 @@ const renderItems = function () {
 
         </article>`
   );
-  document.querySelector(".items-section").innerHTML = !strHtmls.length
+  document.querySelector('.items-section').innerHTML = !strHtmls.length
     ? renderNoItemMsg()
-    : strHtmls.join("");
+    : strHtmls.join('');
 };
 
 const renderFilters = function () {
@@ -56,21 +56,21 @@ const renderFilters = function () {
   const colors = getColors();
 
   let strHTMLs = mainCategories.map(
-    (category) => `
+    category => `
      <li class="main-category" id="${category}" onclick="onFilterByMainCategory('${category}')">${category}</li>
     `
   );
-  document.querySelector(".main-categories").innerHTML = strHTMLs.join("");
+  document.querySelector('.main-categories').innerHTML = strHTMLs.join('');
 
   strHTMLs = colors.map(
-    (color) => `
+    color => `
     <li id="${color}" class="color" onclick="onFilterByColor('${color}')">
     <div class="color-tag ${color}"></div>
     ${color}
     </li>
     `
   );
-  document.querySelector(".colors").innerHTML = strHTMLs.join("");
+  document.querySelector('.colors').innerHTML = strHTMLs.join('');
 };
 
 const onRenderModal = function (itemId) {
@@ -78,9 +78,9 @@ const onRenderModal = function (itemId) {
     item: itemId ? getItem(itemId) : {},
     colors: getColors().sort(),
     mainCategories: getMainCategories(),
-    type: itemId ? "update" : "add",
+    type: itemId ? 'update' : 'add',
   };
-  const elModal = document.querySelector(".modal-body");
+  const elModal = document.querySelector('.modal-body');
   const html = getContent(credentials);
   elModal.innerHTML = html;
   openModal();
@@ -96,12 +96,12 @@ const onFilterByMainCategory = function (newCategory) {
   const currCategory = getFilterByMainCategory();
 
   if (currCategory === newCategory) {
-    setFilterByMainCategory("");
-    document.getElementById(newCategory).classList.remove("active");
+    setFilterByMainCategory('');
+    document.getElementById(newCategory).classList.remove('active');
   } else {
-    document.getElementById(currCategory)?.classList.remove("active");
+    document.getElementById(currCategory)?.classList.remove('active');
     setFilterByMainCategory(newCategory);
-    document.getElementById(newCategory).classList.add("active");
+    document.getElementById(newCategory).classList.add('active');
   }
   renderItems();
   setQueryStringParams();
@@ -111,12 +111,12 @@ const onFilterByColor = function (color) {
   // clearSearchBar();
   const currColor = getFilterByColor();
   if (currColor === color) {
-    setFilterByColor("");
-    document.getElementById(color).classList.remove("active");
+    setFilterByColor('');
+    document.getElementById(color).classList.remove('active');
   } else {
-    document.getElementById(currColor)?.classList.remove("active");
+    document.getElementById(currColor)?.classList.remove('active');
     setFilterByColor(color);
-    document.getElementById(color).classList.add("active");
+    document.getElementById(color).classList.add('active');
   }
   renderItems();
   setQueryStringParams();
@@ -126,8 +126,8 @@ const filterByQueryStringParams = function () {
   // Retrieve data from the current query-params
   const queryStringParams = new URLSearchParams(window.location.search);
   const filterBy = {
-    mainCategory: queryStringParams.get("category") || "",
-    color: queryStringParams.get("color") || "",
+    mainCategory: queryStringParams.get('category') || '',
+    color: queryStringParams.get('color') || '',
   };
 
   if (filterBy.mainCategory) onFilterByMainCategory(filterBy.mainCategory);
@@ -138,11 +138,11 @@ const setQueryStringParams = function () {
   const queryStringParams = `?category=${getFilterByMainCategory()}&color=${getFilterByColor()}`;
   const newUrl =
     window.location.protocol +
-    "//" +
+    '//' +
     window.location.host +
     window.location.pathname +
     queryStringParams;
-  window.history.pushState({ path: newUrl }, "", newUrl);
+  window.history.pushState({ path: newUrl }, '', newUrl);
 };
 
 const onSetSort = function (sortBy) {
@@ -155,13 +155,13 @@ const onSetSort = function (sortBy) {
 const onAddItem = function (ev) {
   ev.preventDefault();
 
-  let elItemName = document.querySelector("[name=item-name]");
-  let elColorKey = document.querySelector("[name=item-color]");
-  let elSize = document.querySelector("[name=item-size]");
-  let elBrand = document.querySelector("[name=item-brand]");
-  let elMainCategory = document.querySelector("[name=item-main-cat]");
-  let elSubCategories = document.querySelector("[name=item-sub-cat]");
-  let elImageUrl = document.querySelector("[name=item-url]");
+  let elItemName = document.querySelector('[name=item-name]');
+  let elColorKey = document.querySelector('[name=item-color]');
+  let elSize = document.querySelector('[name=item-size]');
+  let elBrand = document.querySelector('[name=item-brand]');
+  let elMainCategory = document.querySelector('[name=item-main-cat]');
+  let elSubCategories = document.querySelector('[name=item-sub-cat]');
+  let elImageUrl = document.querySelector('[name=item-url]');
 
   const formDetails = {
     itemName: elItemName.value.toLowerCase(),
@@ -173,14 +173,14 @@ const onAddItem = function (ev) {
     imageUrl: elImageUrl.value,
   };
   const newItem = addItem(formDetails);
-  elItemName.value = "";
-  elColorKey.value = "";
-  elSize.value = "";
-  elBrand.value = "";
-  elMainCategory.value = "";
-  elSubCategories.value = "";
-  elImageUrl.value = "";
-  flashMsg(newItem.itemName, "added to your closet");
+  elItemName.value = '';
+  elColorKey.value = '';
+  elSize.value = '';
+  elBrand.value = '';
+  elMainCategory.value = '';
+  elSubCategories.value = '';
+  elImageUrl.value = '';
+  flashMsg(newItem.itemName, 'added to your closet');
   renderItems();
   onCloseModal();
 };
@@ -194,55 +194,55 @@ const onRemoveItem = function (itemId) {
   ) {
     console.log(`Removing item ${itemId}`);
     removeItem(itemId);
-    flashMsg(itemName, "removed from your closet");
+    flashMsg(itemName, 'removed from your closet');
     renderItems();
   }
 };
 const onUpdateItem = function (ev, itemId) {
   ev.preventDefault();
-  let color1 = document.querySelector("[name=item-color-1]").value;
-  let color2 = document.querySelector("[name=item-color-2]").value;
-  let color3 = document.querySelector("[name=item-color-3]").value;
+  let color1 = document.querySelector('[name=item-color-1]').value;
+  let color2 = document.querySelector('[name=item-color-2]').value;
+  let color3 = document.querySelector('[name=item-color-3]').value;
 
   console.log(`updating ${itemId}`);
   const formDetails = {
-    itemName: document.querySelector("[name=item-name]").value.toLowerCase(),
+    itemName: document.querySelector('[name=item-name]').value.toLowerCase(),
     colorName: document
-      .querySelector("[name=item-color-name]")
+      .querySelector('[name=item-color-name]')
       .value.toLowerCase(),
     colorKey: [color1, color2, color3].filter(Boolean),
-    size: document.querySelector("[name=item-size]").value.toLowerCase(),
-    brand: document.querySelector("[name=item-brand]").value.toLowerCase(),
-    mainCategory: document.querySelector("[name=item-main-cat]").value,
+    size: document.querySelector('[name=item-size]').value.toLowerCase(),
+    brand: document.querySelector('[name=item-brand]').value.toLowerCase(),
+    mainCategory: document.querySelector('[name=item-main-cat]').value,
     subCategories: document
-      .querySelector("[name=item-sub-cat]")
+      .querySelector('[name=item-sub-cat]')
       .value.toLowerCase(),
     collections: document
-      .querySelector("[name=item-collections]")
+      .querySelector('[name=item-collections]')
       .value.toLowerCase(),
-    imageUrl: document.querySelector("[name=item-url]").value,
+    imageUrl: document.querySelector('[name=item-url]').value,
   };
 
   const updatedItem = updateItem(itemId, formDetails);
   onCloseModal();
   renderItems();
-  flashMsg(updatedItem.itemName, "updated");
+  flashMsg(updatedItem.itemName, 'updated');
 };
 
 // modals and msgs
 
 const clearSearchBar = function () {
-  onFilterByTxt("");
-  document.querySelector('input[name="search-bar"]').value = "";
+  onFilterByTxt('');
+  document.querySelector('input[name="search-bar"]').value = '';
 };
 
 const flashMsg = function (itemName, msg) {
   let msgHTML = `<p>${itemName.toLocaleUpperCase()} has been ${msg} successfully</p>`;
-  const el = document.querySelector(".user-msg");
+  const el = document.querySelector('.user-msg');
   el.innerHTML = msgHTML;
-  el.classList.add("open");
+  el.classList.add('open');
   setTimeout(() => {
-    el.classList.remove("open");
+    el.classList.remove('open');
   }, 5000);
 };
 
@@ -254,17 +254,17 @@ const renderNoItemMsg = function () {
 };
 
 const openModal = function () {
-  document.querySelector(".modal").classList.add("open");
+  document.querySelector('.modal').classList.add('open');
 };
 
 const onCloseModal = function () {
-  document.querySelector(".modal").classList.remove("open");
+  document.querySelector('.modal').classList.remove('open');
 };
 
 const getContent = function ({ type, colors, mainCategories, item }) {
-  let html = "";
+  let html = '';
   switch (type) {
-    case "add":
+    case 'add':
       html = `
       <form class="form add-item" onsubmit="onAddItem(event)">
                     <div class="input-wrapper">
@@ -277,10 +277,10 @@ const getContent = function ({ type, colors, mainCategories, item }) {
                             <option value="">choose color</option>
                             ${colors
                               .map(
-                                (color) =>
+                                color =>
                                   `<option value="${color}">${color}</option>`
                               )
-                              .join("")}
+                              .join('')}
                         </select>
                     </div>
                     <div class="input-wrapper">
@@ -296,10 +296,10 @@ const getContent = function ({ type, colors, mainCategories, item }) {
                             <option value="">select main category</option>
                             ${mainCategories
                               .map(
-                                (category) =>
+                                category =>
                                   `<option value="${category}">${category}</option>`
                               )
-                              .join("")}
+                              .join('')}
                         </select>
                     </div>
                     <div class="input-wrapper"> <label for="item-sub-cat">Other Categories</label>
@@ -315,7 +315,7 @@ const getContent = function ({ type, colors, mainCategories, item }) {
       
       `;
       break;
-    case "update":
+    case 'update':
       html = `
             <form class="form update-item" onsubmit="onUpdateItem(event,'${
               item.id
@@ -353,24 +353,24 @@ const getContent = function ({ type, colors, mainCategories, item }) {
                             <option value="">select main category</option>
                             ${mainCategories
                               .map(
-                                (category) =>
+                                category =>
                                   `<option value="${category}" ${
                                     category === item.mainCategory
-                                      ? "selected"
-                                      : ""
+                                      ? 'selected'
+                                      : ''
                                   }>${category}</option>`
                               )
-                              .join("")}
+                              .join('')}
                         </select>
                     </div>
                     <div class="input-wrapper"> <label for="item-sub-cat">Other Categories</label>
                         <input name="item-sub-cat" type="text" value="${item.subCategories.join(
-                          ", "
+                          ', '
                         )}" required />
                     </div>
                     <div class="input-wrapper"> <label for="item-collections">collections</label>
                         <input name="item-collections" type="text" value="${item.collections.join(
-                          ", "
+                          ', '
                         )}" />
                     </div>
                     <div class="input-wrapper"> <label for="item-url">image URL</label>
@@ -394,27 +394,27 @@ function _getColorOptions(itemColors) {
 
   // Giving options for 3 colors per item
   while (itemColors.length < 3) {
-    itemColors.push("");
+    itemColors.push('');
   }
   let html = itemColors.map(
     (itemColor, idx) =>
       `                    
       <label class="color-label" for="item-color-${idx + 1}">Color ${idx + 1}
-            <select name="item-color-${idx + 1}" ${idx === 0 ? "required" : ""}>
+            <select name="item-color-${idx + 1}" ${idx === 0 ? 'required' : ''}>
           <option value="">choose color</option>
             ${allColors
               .map(
-                (color) =>
+                color =>
                   `<option value="${color}" ${
-                    color === itemColor ? "selected" : ""
+                    color === itemColor ? 'selected' : ''
                   }>${color} </option>`
               )
-              .join("")}
+              .join('')}
       </select>
       </label>
 
       `
   );
 
-  return html.join("");
+  return html.join('');
 }

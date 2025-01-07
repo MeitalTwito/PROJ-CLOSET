@@ -1,38 +1,38 @@
-"use strict";
-console.log("Closet service loaded");
+'use strict';
+console.log('Closet service loaded');
 let gItems;
-const STORAGE_KEY = "closetDB";
+const STORAGE_KEY = 'closetDB';
 const gFilterBy = {
-  txt: "",
-  mainCategory: "",
-  color: "",
+  txt: '',
+  mainCategory: '',
+  color: '',
 };
-let gSortBy = "";
+let gSortBy = '';
 const gMainCategories = [
-  "clothing",
-  "beachwear",
-  "accessories",
-  "shoes",
-  "bags",
-  "perfume",
-  "jewellery",
+  'clothing',
+  'beachwear',
+  'accessories',
+  'shoes',
+  'bags',
+  'perfume',
+  'jewellery',
 ];
 const gColors = [
-  "beige",
-  "black",
-  "blue",
-  "brown",
-  "green",
-  "grey",
-  "khaki",
-  "metallic",
-  "navy",
-  "orange",
-  "pink",
-  "purple",
-  "red",
-  "white",
-  "yellow",
+  'beige',
+  'black',
+  'blue',
+  'brown',
+  'green',
+  'grey',
+  'khaki',
+  'metallic',
+  'navy',
+  'orange',
+  'pink',
+  'purple',
+  'red',
+  'white',
+  'yellow',
 ];
 
 _loadItems();
@@ -40,10 +40,10 @@ _loadItems();
 function getItemsToDisplay() {
   let items = gItems;
   items = items.filter(
-    (item) =>
+    item =>
       item.itemName.includes(gFilterBy.txt) ||
       item.brand.includes(gFilterBy.txt) ||
-      item.subCategories.some((subCategory) =>
+      item.subCategories.some(subCategory =>
         subCategory.includes(gFilterBy.txt)
       )
   );
@@ -58,13 +58,13 @@ function getItemsToDisplay() {
   }
 
   switch (gSortBy) {
-    case "a":
+    case 'a':
       items.sort((item1, item2) => (item1.itemName > item2.itemName ? 0 : -1));
       break;
-    case "z":
+    case 'z':
       items.sort((item1, item2) => (item1.itemName > item2.itemName ? -1 : 0));
       break;
-    case "createdAt":
+    case 'createdAt':
       items.sort((item1, item2) => item2.createdAt - item1.createdAt);
       break;
 
@@ -95,7 +95,7 @@ function updateItem(
     colorName,
   }
 ) {
-  const item = gItems.find((item) => item.id === itemId);
+  const item = gItems.find(item => item.id === itemId);
   item.itemName = itemName;
   item.colorName = colorName;
   item.colorKey = colorKey;
@@ -111,7 +111,7 @@ function updateItem(
   return item;
 }
 function removeItem(itemId) {
-  const idx = gItems.findIndex((item) => item.id === itemId);
+  const idx = gItems.findIndex(item => item.id === itemId);
   gItems.splice(idx, 1);
   _saveItemsToStorage();
 }
@@ -148,11 +148,11 @@ function getColors() {
   return gColors;
 }
 function getItemName(itemId) {
-  const item = gItems.find((item) => item.id === itemId);
+  const item = gItems.find(item => item.id === itemId);
   return item.itemName;
 }
 function getItem(itemId) {
-  const item = gItems.find((item) => item.id === itemId);
+  const item = gItems.find(item => item.id === itemId);
   return item;
 }
 
@@ -175,12 +175,13 @@ function _createItem({
     brand,
     mainCategory,
     subCategories: subCategories
-      .split(",")
-      .map((cat) => cat.trim())
+      .split(',')
+      .map(cat => cat.trim())
       .filter(Boolean),
     collections: [],
     imageUrl,
     createdAt: Date.now(),
+    isDesigner: false,
   };
   return item;
 }
