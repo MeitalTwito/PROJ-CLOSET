@@ -389,6 +389,13 @@ const getContent = function ({ type, colors, mainCategories, item }) {
   return html;
 };
 
+const onResetSearch = function () {
+  console.log('reset');
+  onFilterByColor(getFilterByColor());
+  onFilterByMainCategory(getFilterByMainCategory());
+  clearSearchBar();
+};
+
 function _getColorOptions(itemColors) {
   const allColors = getColors();
 

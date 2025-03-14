@@ -105,6 +105,7 @@ function updateItem(
   item.subCategories = stringToArray(subCategories);
   item.imageUrl = imageUrl;
   item.collections = stringToArray(collections);
+  item.isDesigner = item.collections.includes('designer');
   console.log(item);
 
   _saveItemsToStorage();
