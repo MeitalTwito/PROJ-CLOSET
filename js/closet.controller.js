@@ -97,7 +97,7 @@ const onFilterByMainCategory = function (newCategory) {
 
   if (currCategory === newCategory) {
     setFilterByMainCategory('');
-    document.getElementById(newCategory).classList.remove('active');
+    document.getElementById(newCategory)?.classList.remove('active');
   } else {
     document.getElementById(currCategory)?.classList.remove('active');
     setFilterByMainCategory(newCategory);
@@ -112,7 +112,7 @@ const onFilterByColor = function (color) {
   const currColor = getFilterByColor();
   if (currColor === color) {
     setFilterByColor('');
-    document.getElementById(color).classList.remove('active');
+    document.getElementById(color)?.classList.remove('active');
   } else {
     document.getElementById(currColor)?.classList.remove('active');
     setFilterByColor(color);
@@ -390,10 +390,13 @@ const getContent = function ({ type, colors, mainCategories, item }) {
 };
 
 const onResetSearch = function () {
-  console.log('reset');
   onFilterByColor(getFilterByColor());
   onFilterByMainCategory(getFilterByMainCategory());
   clearSearchBar();
+  const userMsg = `
+  <p>Serach params cleared</p>
+  `;
+  flashUserMsg(userMsg);
 };
 
 function _getColorOptions(itemColors) {
@@ -425,3 +428,14 @@ function _getColorOptions(itemColors) {
 
   return html.join('');
 }
+
+const flashUserMsg = function (msgHTML) {
+  console.log(msgHTML);
+
+  const el = document.querySelector('.user-msg');
+  el.innerHTML = msgHTML;
+  el.classList.add('open');
+  setTimeout(() => {
+    el.classList.remove('open');
+  }, 5000);
+};
