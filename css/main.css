@@ -500,7 +500,7 @@ h1 {
     width: calc(100vw / 4);
   }
 }
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
   .main-categories {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
