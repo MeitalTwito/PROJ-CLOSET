@@ -11,6 +11,16 @@ html {
     Helvetica, Arial, 'Lucida Grande', sans-serif;
   font-weight: 300;
 }
+input,
+select,
+textarea,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0; /* מבטל עיגול פינות */
+  background: transparent; /* אם יש צבע רקע דיפולטי */
+}
 
 h1 {
   font-size: 1rem;
@@ -470,7 +480,7 @@ h1 {
 
   .main-categories {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     text-align: center;
     margin-bottom: 2rem;
@@ -514,6 +524,6 @@ h1 {
     padding: 1rem 2rem;
   }
   .form {
-    margin-bottom: 20vh;
+    margin-bottom: 5vh;
   }
 }
