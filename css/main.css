@@ -474,8 +474,6 @@ h1 {
   );
 }
 
-
-
 @media (max-width: 2500px) {
   .items-section {
     grid-template-columns: repeat(7, 1fr);
@@ -483,6 +481,7 @@ h1 {
   .item-name {
     width: calc(100vw / 7);
   }
+}
 
 @media (max-width: 2000px) {
   .items-section {
@@ -491,7 +490,7 @@ h1 {
   .item-name {
     width: calc(100vw / 6);
   }
- 
+}
 
 @media (max-width: 1200px) {
   .items-section {
@@ -555,7 +554,7 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .items-section {
     grid-template-columns: repeat(2, 1fr);
   }
