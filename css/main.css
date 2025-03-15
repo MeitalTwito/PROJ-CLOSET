@@ -7,8 +7,8 @@
 html {
   font-size: 62.5%;
   overflow-x: hidden;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue',
+    Helvetica, Arial, 'Lucida Grande', sans-serif;
   font-weight: 300;
 }
 
@@ -460,4 +460,46 @@ h1 {
     rgb(92.9% 92.9% 92.9%),
     rgb(74.1% 74.1% 74.1%)
   );
+}
+
+@media only screen and (max-width: 600px) {
+  .items-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main-categories {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .main-category {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    outline: 1px solid #ccc;
+    transition: all 0.2s;
+    color: #666;
+    letter-spacing: 0px;
+  }
+
+  .colors {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 1rem;
+  }
+  .color {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+  }
+  .color-tag {
+    height: 1rem;
+    width: 1rem;
+    border: 1px solid #ccc;
+  }
+  .item-name {
+    width: calc(100vw / 2);
+  }
 }

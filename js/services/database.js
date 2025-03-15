@@ -2,36 +2,6 @@
 console.log('DB loaded');
 const newLocalDB = [
   {
-    id: 'oaJgb',
-    itemName: 'pike lake ii insulated vest',
-    colorName: 'khaki',
-    colorKey: ['khaki'],
-    size: 'l',
-    brand: 'columbia',
-    mainCategory: 'clothing',
-    subCategories: ['vest'],
-    collections: [],
-    imageUrl:
-      'https://i.sportisimo.com/products/images/1297/1297495/700x700/columbia-pike-lake-insulated-vest_0.jpg',
-    createdAt: 1741995371554,
-    isDesigner: false,
-  },
-  {
-    id: 'HOzm5',
-    itemName: 'gilet',
-    colorName: 'black',
-    colorKey: ['black', 'khaki'],
-    size: 'm',
-    brand: 'the north face',
-    mainCategory: 'clothing',
-    subCategories: ['vest'],
-    collections: [],
-    imageUrl:
-      'https://www.vintage-folk.com/cdn/shop/files/IMG_4247.jpg?v=1692623000&width=1800',
-    createdAt: 1741995103393,
-    isDesigner: false,
-  },
-  {
     id: 'u3f2P',
     itemName: 'reputation top',
     colorName: 'black',
@@ -1294,6 +1264,36 @@ const newLocalDB = [
     collections: ['casual'],
     imageUrl:
       'https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-SLT.jpg?auto=format&w=2000&h=2000&q=100',
+    createdAt: 1732991235921,
+    isDesigner: false,
+  },
+  {
+    id: 'oaJgb',
+    itemName: 'pike lake ii insulated vest',
+    colorName: 'khaki',
+    colorKey: ['khaki'],
+    size: 'l',
+    brand: 'columbia',
+    mainCategory: 'clothing',
+    subCategories: ['vest'],
+    collections: [],
+    imageUrl:
+      'https://i.sportisimo.com/products/images/1297/1297495/700x700/columbia-pike-lake-insulated-vest_0.jpg',
+    createdAt: 1732991235921,
+    isDesigner: false,
+  },
+  {
+    id: 'HOzm5',
+    itemName: 'gilet',
+    colorName: 'black',
+    colorKey: ['black', 'khaki'],
+    size: 'm',
+    brand: 'the north face',
+    mainCategory: 'clothing',
+    subCategories: ['vest'],
+    collections: [],
+    imageUrl:
+      'https://www.vintage-folk.com/cdn/shop/files/IMG_4247.jpg?v=1692623000&width=1800',
     createdAt: 1732991235921,
     isDesigner: false,
   },
