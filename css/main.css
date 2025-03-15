@@ -507,4 +507,13 @@ h1 {
     width: 100vw;
     overflow-y: scroll;
   }
+  .modal-header {
+    padding: 2rem;
+  }
+  .modal-body {
+    padding: 1rem 1rem;
+  }
+  .form {
+    margin-bottom: 20vh;
+  }
 }
