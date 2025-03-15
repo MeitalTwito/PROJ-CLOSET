@@ -503,4 +503,8 @@ h1 {
   .item-name {
     width: calc(100vw / 2);
   }
+  .modal {
+    width: 100vw;
+    overflow-y: scroll;
+  }
 }
